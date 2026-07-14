@@ -1,0 +1,380 @@
+@import 'tailwindcss';
+@import '@porsche-design-system/components-react/tailwindcss';
+
+/* ─── Root & Background ─── */
+.prerak-root {
+  position: relative;
+  min-height: 100vh;
+  background-color: #0e0e12;
+  overflow-x: hidden;
+}
+
+.bg-animated {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-layer-1 {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% -10%, rgba(180, 30, 30, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 85% 110%, rgba(80, 20, 120, 0.15) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(10, 10, 25, 0.9) 0%, transparent 100%);
+  animation: gradientShift 18s ease-in-out infinite alternate;
+}
+
+.bg-layer-2 {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 40% at 70% 20%, rgba(220, 40, 40, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 10% 80%, rgba(60, 10, 90, 0.12) 0%, transparent 50%);
+  animation: gradientShift2 24s ease-in-out infinite alternate;
+}
+
+.bg-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+@keyframes gradientShift {
+  0%   { transform: scale(1) translateX(0px) translateY(0px); }
+  50%  { transform: scale(1.05) translateX(20px) translateY(-15px); }
+  100% { transform: scale(1) translateX(-10px) translateY(10px); }
+}
+
+@keyframes gradientShift2 {
+  0%   { transform: scale(1) translateX(0px) translateY(0px); }
+  50%  { transform: scale(1.08) translateX(-25px) translateY(20px); }
+  100% { transform: scale(1.02) translateX(15px) translateY(-10px); }
+}
+
+/* ─── Status Bar ─── */
+.status-bar {
+  position: fixed;
+  top: clamp(12px, 2vw, 20px);
+  right: clamp(16px, 3vw, 32px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 6px 14px 6px 10px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px 2px rgba(34, 197, 94, 0.7);
+  animation: pulse-glow 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px 2px rgba(34, 197, 94, 0.7); opacity: 1; }
+  50%       { box-shadow: 0 0 16px 5px rgba(34, 197, 94, 0.4); opacity: 0.8; }
+}
+
+/* ─── Main layout ─── */
+.portal-main {
+  position: relative;
+  z-index: 1;
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: clamp(80px, 10vw, 120px) clamp(20px, 5vw, 64px) 60px;
+}
+
+/* ─── Hero ─── */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(10px, 1.5vw, 18px);
+  margin-bottom: clamp(48px, 7vw, 96px);
+  text-align: center;
+}
+
+.wordmark-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  margin-bottom: 8px;
+}
+
+.prerak-logo {
+  font-family: 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #e30000;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.prerak-wordmark {
+  font-family: 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #fbfcff;
+  letter-spacing: 4px;
+  line-height: 1;
+}
+
+.hero-title {
+  /* PHeading renders its own element — just spacing */
+}
+
+.hero-subtitle {
+  margin-top: -4px;
+}
+
+.hero-desc {
+  max-width: 480px;
+  margin-top: 4px;
+  opacity: 0.7;
+}
+
+/* ─── Section divider row ─── */
+.section-label-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+
+.forthcoming-label-row {
+  margin-top: clamp(48px, 7vw, 80px);
+}
+
+.section-divider {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.section-label {
+  white-space: nowrap;
+  letter-spacing: 3px;
+  opacity: 0.5;
+}
+
+/* ─── Service cards grid ─── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(20px, 3vw, 32px);
+}
+
+/* ─── Individual service card ─── */
+.service-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    transform 0.28s cubic-bezier(0.25, 0.1, 0.25, 1),
+    box-shadow 0.28s cubic-bezier(0.25, 0.1, 0.25, 1),
+    border-color 0.28s cubic-bezier(0.25, 0.1, 0.25, 1),
+    background 0.28s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.service-card:hover,
+.service-card--hovered {
+  transform: translateY(-6px) scale(1.025);
+  background: rgba(255, 255, 255, 0.075);
+  border-color: var(--accent, rgba(255,255,255,0.2));
+  box-shadow:
+    0 0 0 1px var(--accent, rgba(255,255,255,0.15)),
+    0 8px 40px var(--glow, rgba(255,255,255,0.1)),
+    0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.service-card:focus-visible {
+  outline: 2px solid var(--accent, #e30000);
+  outline-offset: 3px;
+}
+
+/* Accent top bar */
+.card-accent-bar {
+  height: 3px;
+  background: var(--accent, #e30000);
+  width: 100%;
+  flex-shrink: 0;
+  transition: opacity 0.28s;
+  opacity: 0.6;
+}
+
+.service-card:hover .card-accent-bar {
+  opacity: 1;
+}
+
+/* Icon */
+.card-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  margin: 28px 28px 0 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.28s, box-shadow 0.28s;
+  flex-shrink: 0;
+}
+
+.service-card:hover .card-icon-wrap {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 20px var(--glow, rgba(255,255,255,0.1));
+}
+
+/* Meta */
+.card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 28px 0;
+}
+
+.card-tag {
+  align-self: flex-start;
+  letter-spacing: 1.5px;
+  font-size: 10px !important;
+}
+
+.card-name {
+  /* PHeading */
+}
+
+.card-tagline {
+  opacity: 0.6;
+}
+
+/* Description — slides in on hover */
+.card-desc-wrap {
+  padding: 0 28px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), padding 0.25s;
+}
+
+.service-card:hover .card-desc-wrap,
+.service-card--hovered .card-desc-wrap {
+  max-height: 120px;
+  padding-top: 12px;
+}
+
+.card-desc {
+  opacity: 0.65;
+  line-height: 1.65;
+}
+
+/* CTA */
+.card-cta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 20px 28px 24px;
+  margin-top: auto;
+}
+
+.cta-label {
+  font-family: 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent, #e30000);
+  letter-spacing: 0.5px;
+  transition: letter-spacing 0.2s;
+}
+
+.service-card:hover .cta-label {
+  letter-spacing: 1.5px;
+}
+
+/* ─── Locked / forthcoming cards ─── */
+.forthcoming-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: clamp(16px, 2.5vw, 24px);
+}
+
+.locked-card {
+  background: rgba(255, 255, 255, 0.022);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  opacity: 0.55;
+  cursor: default;
+  overflow: hidden;
+}
+
+.locked-card-inner {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.locked-icon-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lock-icon {
+  opacity: 0.5;
+}
+
+.locked-name {
+  /* PHeading */
+}
+
+.locked-desc {
+  opacity: 0.5;
+  line-height: 1.6;
+}
+
+.locked-badge {
+  margin-top: 4px;
+}
+
+/* ─── Footer ─── */
+.portal-footer {
+  margin-top: clamp(48px, 6vw, 80px);
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  opacity: 0.4;
+}
+
+/* ─── Responsive tweaks ─── */
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  .forthcoming-grid {
+    grid-template-columns: 1fr;
+  }
+  .status-bar {
+    top: 12px;
+    right: 12px;
+  }
+}
