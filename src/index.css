@@ -50,6 +50,17 @@ html, body {
   flex-wrap: wrap;
 }
 
+.header-wordmark {
+  font-family: Impact, 'Arial Black', Arial, sans-serif;
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--fg);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
 .nav-links {
   display: flex;
   align-items: center;

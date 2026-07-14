@@ -55,6 +55,8 @@ export default function App() {
 
       {/* ── TOP BAR ── */}
       <header className="top-bar">
+        <span className="header-wordmark">PRERAKLAND</span>
+
         <nav className="nav-links">
           <span className="nav-item">HOME</span>
           <span className="nav-sep">/</span>
