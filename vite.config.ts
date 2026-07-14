@@ -30,5 +30,5 @@ const transformIndexHtmlPlugin = () => {
 
 export default defineConfig({
   plugins: [react(), tailwindcss(), transformIndexHtmlPlugin()],
-  base: '/preraklandingpage/',
+  base: '/',
 });
