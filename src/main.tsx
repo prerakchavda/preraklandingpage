@@ -6,8 +6,6 @@ import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <PorscheDesignSystemProvider theme="dark">
       <App />
-    </PorscheDesignSystemProvider>
   </StrictMode>
 );
